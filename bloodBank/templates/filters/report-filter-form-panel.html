@@ -1,0 +1,143 @@
+<div class="row-fluid" style="padding: 0;">
+    <form class="col-md-12 col-sm-12">
+        <div class="custom-col-4 col-md-4 col-sm-12" style="padding: 5px 0 0 0;">
+            {% for field in parameters.G1 %}
+                {% if field|is_datetime %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group"
+                         style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class='col-md-12 col-sm-12 input-group date controls datetimepicker'
+                             style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="add-on date-sel input-group-addon">
+                                <i data-date-icon="icon-calendar" class="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group" style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class="col-md-12 col-sm-12 controls"
+                             style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="field-validation-valid" data-valmsg-replace="true"
+                                  data-valmsg-for="{{ field.name.lower }}"></span>
+                            {{ field.errors }}
+                        </div>
+                        {% if field|is_multiple_choice %}
+                            <!-- Show add_all, clear_button at bottom of the field since filed label can be long and
+                            it may break the add_all button on top and clear_button at bottom or both in bottom
+                            which will be inconsistent for user
+                            -->
+                            <label class="checkbox-label" style="float:left">
+                                <input class="add_all" type="checkbox"
+                                       name="{{ field.name.lower }}_add_all">
+                                <span></span>
+                                Add all
+                            </label>
+
+                            <label class="checkbox-label" style="float:left; margin-left: 5px">
+                                <input class="clear_all" type="checkbox"
+                                       name="{{ field.name.lower }}_clear_all">
+                                <span></span>
+                                Clear all
+                            </label>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="custom-col-4 col-md-4 col-sm-12" style="padding: 5px 0 0 0;">
+            {% for field in parameters.G2 %}
+                {% if field|is_datetime %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group"
+                         style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class='col-md-12 col-sm-12 input-group date controls datetimepicker'
+                             style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="add-on date-sel input-group-addon">
+                                <i data-date-icon="icon-calendar" class="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group" style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class="col-md-12 col-sm-12 controls list-unstyled map-list" style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="field-validation-valid" data-valmsg-replace="true"
+                                  data-valmsg-for="{{ field.name.lower }}"></span>
+                            {{ field.errors }}
+                        </div>
+                        {% if field|is_multiple_choice %}
+                            <!-- Show add_all, clear_button at bottom of the field since filed label can be long and
+                                    it may break the add_all button on top and clear_button at bottom or both in bottom
+                                    which will be inconsistent for user
+                            -->
+                            <label class="checkbox-label" style="float:left">
+                                <input class="add_all" type="checkbox"
+                                       name="{{ field.name.lower }}_add_all">
+                                <span></span>
+                                Add all
+                            </label>
+
+                            <label class="checkbox-label" style="float:left; margin-left: 5px">
+                                <input class="clear_all" type="checkbox"
+                                       name="{{ field.name.lower }}_clear_all">
+                                <span></span>
+                                Clear all
+                            </label>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="custom-col-4 col-md-4 col-sm-12" style="padding: 5px 0 0 0;">
+            {% for field in parameters.G3 %}
+                {% if field|is_datetime %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group"
+                         style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class='col-md-12 col-sm-12 input-group date controls datetimepicker'
+                             style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="add-on date-sel input-group-addon">
+                                <i data-date-icon="icon-calendar" class="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="custom-col-12 col-md-12 col-sm-12 form-group" style="display: block; padding: 0;">
+                        <label for="{{ field.name.lower }}">{{ field.label }}</label>
+                        <div class="col-md-12 col-sm-12 controls list-unstyled map-list" style="padding-left: 0;">
+                            {% render_field field|add_error_class:'input-validation-error' %}
+                            <span class="field-validation-valid" data-valmsg-replace="true"
+                                  data-valmsg-for="{{ field.name.lower }}"></span>
+                            {{ field.errors }}
+                        </div>
+                        {% if field|is_multiple_choice %}
+                            <!-- Show add_all, clear_button at bottom of the field since filed label can be long and
+                                    it may break the add_all button on top and clear_button at bottom or both in bottom
+                                    which will be inconsistent for user
+                            -->
+                            <label class="checkbox-label" style="float:left">
+                                <input class="add_all" type="checkbox"
+                                       name="{{ field.name.lower }}_add_all">
+                                <span></span>
+                                Add all
+                            </label>
+
+                            <label class="checkbox-label" style="float:left; margin-left: 5px">
+                                <input class="clear_all" type="checkbox"
+                                       name="{{ field.name.lower }}_clear_all">
+                                <span></span>
+                                Clear all
+                            </label>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </form>
+</div> <!--//.COL 3-->

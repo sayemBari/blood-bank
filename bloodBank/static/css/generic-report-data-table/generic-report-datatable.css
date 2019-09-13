@@ -1,0 +1,130 @@
+.custom-row-fluid {
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+.custom-widget {
+    background-color: #ffffff;
+    box-shadow: 10px 10px 5px #dddddd;
+    border-radius: 6px;
+    padding: 25px;
+    margin-top:20px;
+    min-width: 488px;
+}
+
+.table th {
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+.generic-report-datatable th, .generic-report-datatable td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 3px;
+}
+
+.generic-report-datatable tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+.generic-report-datatable tr:hover {
+    background-color: #ddd;
+}
+
+.generic-report-datatable th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #00a99d;
+    color: white;
+}
+
+.generic-report-datatable tfoot tr th {
+    vertical-align: middle;
+}
+
+.vertical-line{
+    width: 2px;
+    height: 100%;
+    Background-color: #000;
+    float: left;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.horizontal-line{
+    width: 100%;
+    height: 2px;
+    Background-color: #000;
+    float: left;
+    margin: 0 auto;
+}
+
+.text {
+    position:  absolute;
+    top: 45%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    /*whatever width you want*/
+}
+
+.y-val {
+    width: 90px;
+    height: 20px;
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari 3-8 */
+    transform: rotate(-90deg);
+}
+
+.titleY{
+    display: block;
+    -webkit-transform: rotate(-90deg);
+
+    /* Firefox */
+    -moz-transform: rotate(-90deg);
+
+    /* IE */
+    -ms-transform: rotate(-90deg);
+
+    /* Opera */
+    -o-transform: rotate(-90deg);
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    width: 100px;
+    margin-top: 110px;
+    margin-left: 35px;
+}
+
+.titleX{
+    display: block;
+
+    /* Internet Explorer */
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    margin-top: 5px;
+    margin-left: 90px;
+}

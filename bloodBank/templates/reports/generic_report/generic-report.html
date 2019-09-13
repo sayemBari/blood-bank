@@ -1,0 +1,140 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% load report_tags %}
+
+{% block header %}
+    <div class="col-sm-1 hidden-xs"></div>
+
+    <div class="col-sm-4">
+        <div class="fbx-title  xs-text-center">
+            <h3>{{ title }}</h3>
+        </div>
+    </div>
+    <div class="text-right">
+        <div style="margin-top: 5px; margin-right: 25px;">
+            <button class="btn generic-btn-style btn-large" id="update-report-btn" style="border-radius: 2px">Update
+                Report
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <!-- Input Validation Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/validation/validation.css?v=1.0.0"/>
+    <!-- Bootstrap Datepicker Stylesheet -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"/>
+    <!-- Customised Multiple Datepicker Stylesheet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/custom-multi-date-picker/custom-multi-date-picker.css?v=1.0.1"/>
+    <!-- Date Range Picker Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="{{ STATIC_URL }}css/custom-date-range-picker/custom-date-range-picker.css?v=1.0.1"/>
+    <!-- Bootstrap DataTable Stylesheet -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"/>
+    <!-- Generic Report DataTable Stylesheet -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/generic-report-data-table/generic-report-datatable.css?v=1.0.1"/>
+{% endblock %}
+
+{% block content %}
+
+    {% with WIDGET_ERROR_CLASS='error' WIDGET_REQUIRED_CLASS='required' %}
+
+        {% include 'filters/report-filter-form-panel.html' %}
+
+    {% endwith %}
+    <legend style="padding-top: 5px;"></legend>
+    <div class="container-fluid report-container" style="margin: 20px 0; padding-left: 0; padding-right: 0;">
+        <div id="report-view" class="span11">
+            <div class="col-lg-12 col-md-12 form-horizontal report-content-top">
+                <div class="row-fluid custom-row-fluid">
+                    <div class="row-fluid">
+                        <div class="custom-widget">
+                            <table id="data-table-widget"
+                                   class="table generic-report-datatable datatable table-striped table-bordered"
+                                   style="width: 100%">
+                            </table>
+                        </div>
+                    </div>
+                    {% for graph_widget_id in graph_widget_ids %}
+                        <br/>
+                        <div class="row-fluid">
+                            <div class="custom-widget">
+                                <div class="graph-widget" id="{{ graph_widget_id }}"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% if mapPlot == True %}
+                        <br/>
+                        <div class="row">
+                            <div class="col-lg-6 col-lg-push-6">
+                                <button type="button" class="btn btn-success pull-right " id="update-map"
+                                        style="background-color: #006331; border-color: #006331; margin-bottom: 15px; margin-right: 5px; border-radius: 1px;">
+                                    Update Map
+                                </button>
+                            </div>
+                            <div class="col-lg-12">
+                                <div id="map-canvas"></div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            var plotWiseCoords = "{{ val.plot_wise_coords }}";
+                            var centerLat = "{{ val.centerLat }}";
+                            var centerLng = "{{ val.centerLng }}";
+                        </script>
+                        <script src="https://maps.googleapis.com/maps/api/js?key={{ map_api_key }}&v=3.exp"></script>
+                        <script src="{{ STATIC_URL }}js/smart-map-engine/generate-map-polygon.js?v=1.0.0"></script>
+                        <script src="{{ STATIC_URL }}js/smart-map-engine/init-map-polygon.js?v=1.0.0"></script>
+                    {% endif %}
+                    {% if mapMarker == True %}
+                        <div class="row-fluid">
+                            <div class="custom-widget">
+                                <div id="totalItems"></div>
+                                <div id="map-canvas" style="position: relative; height: 600px; width: 100%;"></div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block childscripts2 %}
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+    <!-- Date Range Picker JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!-- Bootstrap DataTable JS -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+    <!-- Highcharts JS -->
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- Highcharts JS for GPU boosting in order to render the graph-->
+    <script type="text/javascript" src="https://code.highcharts.com/modules/boost.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>-
+    <script type="text/javascript" src="https://code.highcharts.com/modules/export-data.js"></script>
+    <!-- Highchart Graph Report Engine JS -->
+    <script type="text/javascript" src="{{ STATIC_URL }}js/highchart-graph-engine/highchart-graph-engine.js?v=1.0.2"></script>
+    <!-- Generic Report Engine JS -->
+    <script type="text/javascript" src="{{ STATIC_URL }}js/generic-report-engine/generic-report-engine.js?v=1.0.3"></script>
+    <!-- Generic Map Report Engine -->
+    <script src="{{ STATIC_URL }}js/smart-map-engine/generic-map-report-engine.js?v=1.0.0"></script>
+    <!-- Customised Extra Script JS -->
+    {% for extra_script in extra_scripts %}
+        <script src="{{ STATIC_URL }}{{ extra_script }}"></script>
+    {% endfor %}
+
+{% endblock %}

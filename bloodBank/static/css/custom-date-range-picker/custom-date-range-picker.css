@@ -1,0 +1,12 @@
+/********** author 'Sayem' *********/
+
+.daterangepicker td.active,
+.daterangepicker td.active:not(.off),
+.daterangepicker td.active:hover {
+    background-color: #00a99d;
+}
+
+.daterangepicker button.applyBtn.disabled,
+.daterangepicker button.applyBtn[disabled] {
+    background-color: #00a99d;
+}

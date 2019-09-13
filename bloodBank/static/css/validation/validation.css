@@ -1,0 +1,27 @@
+.errorlist{
+    list-style: none;
+    margin-left: 0px;
+}
+
+.errorlist li {
+    color: #c0272b;
+}
+
+
+textarea.input-validation-error,
+input[type="text"].input-validation-error, input[type="password"].input-validation-error, input[type="datetime"].input-validation-error,
+input[type="datetime-local"].input-validation-error, input[type="date"].input-validation-error, input[type="month"].input-validation-error,
+input[type="time"].input-validation-error, input[type="week"].input-validation-error, input[type="number"].input-validation-error,
+input[type="email"].input-validation-error, input[type="url"].input-validation-error, input[type="search"].input-validation-error,
+input[type="tel"].input-validation-error, input[type="color"].input-validation-error{
+    border-color: #c0272b;
+}
+
+form input[type='checkbox'] {
+    opacity: 1;
+    position: relative;
+}
+
+.field-validation-error{
+    color: #c0272b;
+}

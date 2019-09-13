@@ -1,0 +1,50 @@
+/********** author 'Sayem' *********/
+
+.datepicker td.active, .datepicker td.active:hover {
+    background-image: none;
+    background-color: #00a99d;
+}
+
+.datepicker table td.active, .datepicker table td.active:hover {
+    background-image: none !important;
+    background-color: #00a99d !important;
+}
+
+.datepicker td.active:hover,
+.datepicker td.active:hover:hover,
+.datepicker td.active:active,
+.datepicker td.active:hover:active,
+.datepicker td.active.active,
+.datepicker td.active:hover.active,
+.datepicker td.active.disabled,
+.datepicker td.active:hover.disabled,
+.datepicker td.active[disabled],
+.datepicker td.active:hover[disabled] {
+    background-image: none;
+    background-color: #00a99d;
+    border-radius: 2px;
+}
+
+.datepicker td span.active {
+    background-image: none;
+}
+
+.datepicker td span.active:hover,
+.datepicker td span.active:active,
+.datepicker td span.active.active,
+.datepicker td span.active.disabled,
+.datepicker td span.active[disabled] {
+    background-color: #00a99d;
+}
+.datepicker table td span {
+    border-radius: 2px;
+}
+.datepicker {
+    border-radius: 2px;
+}
+
+.datepicker table td span {
+    width: 42px;
+    height: 32px;
+    line-height: 32px;
+}
